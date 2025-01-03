@@ -9,6 +9,28 @@ for (int i = 0; i < number; i++)
 
 	if (words.ContainsKey(word))
 	{
-		
+		words.Add(synonym, new List<string>());
+	}
+	else
+	{
+		words.Add(word, new List<string>());
+		words.Add(synonym, new List<string>());
+	}
+}
+
+foreach (var word in words)
+{
+    Console.Write($"{word.Key} - ");
+	foreach (var item in words)
+	{
+		if (word.Value.Count > 1)
+		{
+			Console.WriteLine($"{word.Value}");
+		}
+		else
+		{
+			Console.Write($"{word.Value.},");
+		}
+		continue;
 	}
 }
