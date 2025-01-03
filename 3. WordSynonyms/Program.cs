@@ -9,28 +9,36 @@ for (int i = 0; i < number; i++)
 
 	if (words.ContainsKey(word))
 	{
-		words.Add(synonym, new List<string>());
+		words[word].Add(synonym);
 	}
 	else
 	{
 		words.Add(word, new List<string>());
-		words.Add(synonym, new List<string>());
+		words[word].Add(synonym);
 	}
 }
 
 foreach (var word in words)
 {
-    Console.Write($"{word.Key} - ");
-	foreach (var item in words)
+	Console.Write($"{word.Key} - ");
+	for (int i = 0; i < word.Value.Count; i++)
 	{
 		if (word.Value.Count > 1)
 		{
-			Console.WriteLine($"{word.Value}");
+			if (i == word.Value.Count - 1)
+			{
+				Console.Write($"{word.Value[i]}");
+                Console.WriteLine();
+			}
+			else
+			{
+				Console.Write($"{word.Value[i]}, ");
+			}
 		}
 		else
 		{
-			Console.Write($"{word.Value.},");
+			Console.Write($"{word.Value[i]}");
+			Console.WriteLine();
 		}
-		continue;
 	}
 }
