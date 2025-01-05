@@ -17,25 +17,23 @@
 				double price = double.Parse(input[1]);
 				int quantity = int.Parse(input[2]);
 
-
 				if (dictionary.ContainsKey(name))
 				{
-					dictionary[name] = price;
 					foreach (var item in dictionary)
 					{
 						if (item.Key == name)
 						{
 							dictionary[name] += quantity;
-							break;
+							double newPrice = price;
+							dictionary[name] *= price;
 						}
 					}
-					dictionary[name] = price * quantity;
 				}
 
 				if (!dictionary.ContainsKey(name))
 				{
-					dictionary.Add(name, price);
-					dictionary[name] += quantity;
+					dictionary.Add(name, quantity);
+					//dictionary[name] += quantity;
 					dictionary[name] = price * quantity;
 				}
 			}
