@@ -6,6 +6,7 @@
 		{
 			Dictionary<string, double> dictionary = new Dictionary<string, double>();
 
+			double price = 0;
 			while (true)
 			{
 				string[] input = Console.ReadLine().Split().ToArray();
@@ -14,8 +15,18 @@
 				{
 					break;
 				}
-				double price = double.Parse(input[1]);
 				int quantity = int.Parse(input[2]);
+				//if (dictionary.ContainsKey(name))
+				//{
+				//	foreach (var item in dictionary)
+				//	{
+				//		if (item.Key == name)
+				//		{
+				//			dictionary[name] /= item.Value;
+				//		}
+				//	}
+				//}
+				price = double.Parse(input[1]);
 
 				if (dictionary.ContainsKey(name))
 				{
@@ -33,7 +44,6 @@
 				if (!dictionary.ContainsKey(name))
 				{
 					dictionary.Add(name, quantity);
-					//dictionary[name] += quantity;
 					dictionary[name] = price * quantity;
 				}
 			}
