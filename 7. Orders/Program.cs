@@ -12,23 +12,28 @@ namespace _7._Orders
 			{
 				string[] commands = Console.ReadLine().Split();
 				string name = commands[0];
-				double price = double.Parse(commands[1]);
-				int quantity = int.Parse(commands[2]);
-
 				if (name == "buy")
 				{
 					break;
 				}
+				double price = double.Parse(commands[1]);
+				int quantity = int.Parse(commands[2]);
 
 				if (products.ContainsKey(name))
 				{
-
+					products[name].Price = price;
+					products[name].Quantity += quantity;
+				}
+				else
+				{
+					var product = new Product(name, price, quantity);
+					products.Add(name, product);
 				}
 			}
 
-			foreach (string name in products.Keys)
+			foreach (Product product in products.Values)
 			{
-
+                Console.WriteLine(product);
 			}
 		}
 
@@ -49,7 +54,7 @@ namespace _7._Orders
 
             public override string ToString()
 			{
-				return $"{Name} -> {Quantity * Price}";
+				return $"{Name} -> {Quantity * Price:f2}";
 			}
 		}
 	}
